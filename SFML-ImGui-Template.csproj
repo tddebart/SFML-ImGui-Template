@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <RootNamespace>FallingSandGame</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ImGui.NET" Version="1.78.0" />
+      <PackageReference Include="Saffron.Util.ImGuiSFML" Version="1.3.0" />
+      <PackageReference Include="SFML.Net" Version="2.5.0" />
+      <PackageReference Include="System.Drawing.Common" Version="7.0.0-preview.4.22229.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="resources\background.jpg" />
+      <None Remove="resources\sansation.ttf" />
+      <None Remove="resources\texture.jpg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\Fonts\Arial.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Arial.ttf">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
+</Project>
