@@ -11,7 +11,9 @@ public class Game
     // fps counter stuff
     private int framesRendered;
     private int fps;
+    private Text fpsText;
     private DateTime lastTime;
+    private Clock deltaClock = new();
 
     public Game()
     {
@@ -19,6 +21,8 @@ public class Game
 
         window.SetVerticalSyncEnabled(true);
         window.Closed += (_, _) => window.Close();
+        
+        fpsText = new Text((fps).ToString(), font, 30);
     }
 
     public void Run()
@@ -39,7 +43,7 @@ public class Game
 
     private void Update()
     {
-        GuiImpl.Update(window, 0);
+        GuiImpl.Update(window, deltaClock.Restart().AsSeconds());
     }
     
     private void Draw()
@@ -56,13 +60,11 @@ public class Game
             lastTime = DateTime.Now;
         }
         
-        window.PushGLStates();
-        window.Draw(new Text((fps).ToString(), font, 30));
-        window.PopGLStates();
-        
         ImGui.ShowDemoWindow();
 
         GuiImpl.Render(window);
+        fpsText.DisplayedString = fps.ToString();
+        window.Draw(fpsText);
         
         window.Display();
     }
