@@ -3,7 +3,7 @@ public class Game
 {
     public const uint width = 1280;
     public const uint height = 720;
-    private const string title = "Pong";
+    private const string title = "Example project";
     private RenderWindow window;
     private readonly VideoMode mode = new(width, height);
     private readonly Font font = new("./Resources/Fonts/Arial.ttf");
@@ -21,6 +21,7 @@ public class Game
 
         window.SetVerticalSyncEnabled(true);
         window.Closed += (_, _) => window.Close();
+        window.RequestFocus();
         
         fpsText = new Text((fps).ToString(), font, 30);
     }
